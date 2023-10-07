@@ -12,7 +12,8 @@ app.get("/", (req, res) => {
 
 io.on("connection", (socket) => {
   socket.on("chat message", (msg) => {
-    console.log("message: " + msg);
+    // this will emit the event to all connected sockets
+    io.emit("chat message", msg);
   });
 });
 
